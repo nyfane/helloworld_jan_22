@@ -14,7 +14,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/nyfane/helloworld_jan_22.git'
             }
         }
-    stages {
         stage('Code build') {
             steps {
                 sh 'mvn clean'
@@ -34,7 +33,7 @@ pipeline {
                 } 
             }
         }
-     stage('Deploy image') {
+     stage('Deployment image') {
             steps{
                 script{ 
                     docker.withRegistry("https://"+registry,"ecr:us-west-2:"+registryCredential) {
